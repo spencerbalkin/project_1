@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Matching Game</title>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <script src="app.js"></script> -->
+  <script src="tryThis.js"></script>
+</head>
+<body>
+  <h1>Find Your Friend!</h1>
+
+  <header>
+    <h2 class="player1">Player 1: <span id="player1_score">0</span> <br />Attempts: <span id="player1_attempts">0</span></h2>
+
+    <h2 class="player2">Player 2: <span id="player2_score">0</span><br />Attempts: <span id="player2_attempts">0</span></h2>
+  </header>
+
+  <div id="container">
+    <div id="grid">
+      <div id="card1" class="card">
+        <div class="box">X</div>
+        <div class="back"><span class="backOfCard">?</span></div>
+      </div>
+      <div id="card2" class="card">
+        <div class="box">X</div>
+        <div class="back"><span class="backOfCard">?</span></div>
+      </div>
+      <div id="card3" class="card">
+        <div class="box">X</div>
+        <div class="back"><span class="backOfCard">?</span></div>
+      </div>
+      <div id="card4" class="card">
+        <div class="box">X</div>
+        <div class="back"><span class="backOfCard">?</span></div>
+      </div>
+      <div id="card5" class="card">
+        <div class="box">X</div>
+        <div class="back"><span class="backOfCard">?</span></div>
+      </div>
+      <div id="card6" class="card">
+        <div class="box">X</div>
+        <div class="back"><span class="backOfCard">?</span></div>
+      </div>
+      <div id="card7" class="card">
+        <div class="box">X</div>
+        <div class="back"><span class="backOfCard">?</span></div>
+      </div>
+      <div id="card8" class="card">
+        <div class="box">X</div>
+        <div class="back"><span class="backOfCard">?</span></div>
+      </div>
+      <div id="card9" class="card">
+        <div class="box">X</div>
+        <div class="back"><span class="backOfCard">?</span></div>
+      </div>
+    </div>
+
+    <div id="right">
+      <h3 id="sidebarHeader">Pick a character!</h3>
+      <div class="character">
+        <button>
+          <img id="cheech" src="faces/cheech.png" alt="Cheech">
+        </button>
+        <button>
+          <img id="spencer" src="faces/spencer.png" alt="Spencer">
+        </button>
+        <button>
+          <img id="mark" src="faces/mark.png" alt="Mark">
+        </button>
+        <button>
+          <img id="troy" src="faces/troy.png" alt="Troy">
+        </button>
+      </div>
+      <button id="reset">Reset Game</button>
+    </div>
+  </div>
+</body>
+</html>
