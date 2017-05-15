@@ -6,6 +6,113 @@ $(document).ready(function() {
   }
 
 
+  // variable to hold the state of the game - true = playing; false = game over
+  var play = true;
+
+  var player = "player1";
+
+  //prompts player 1 that it is their turn in the sidebar
+  function player1Overlay() {
+      $("#right").append(`<div id="p1TurnOverlay"></div>`);
+      $("#p1TurnOverlay").append($(`<div id="p1textInOverlay"></div>`));
+      $("#p1TurnOverlay").append($(`<div id="p1ok"></div>`))
+          $("#p1ok").text("OK")
+          $("#p1ok").on("click", function(){
+          $("#p1TurnOverlay").css("display", "none")
+        });
+          $("#p1textInOverlay").html("Player 1, you're up! Pick a friend and go find them!");
+
+      //css for ok button
+      $("#p1ok").css({
+        "text-align": "center",
+        "padding-top": "25px",
+        "margin-left": "50px",
+        "width": "150px",
+        "height": "50px",
+        "border": "#FFF 1px solid",
+        "background-color": "black",
+        "color": "white",
+      });
+
+      //css for text prompting player 1 it is their turn
+      $("#p1textInOverlay").css({
+        "font-size": "20px",
+        "color": "#FFF",
+        "text-align": "center",
+        "text-align": "center",
+        "margin-bottom": "50px"
+        });
+
+      // css for p1overlay
+      $("#right").css("position", "relative");
+
+      play = false;
+
+      $("#p1TurnOverlay").css({
+        "padding-top": "100px",
+        "box-sizing": "border-box",
+        "background-color": "rgba(0, 0, 0, .9)",
+        "width": "100%",
+        "height": "100%",
+        "z-index": "10%",
+        "top": "0",
+        "left": "0",
+        "position": "absolute",
+    }); //End function
+}
+
+player1Overlay()
+
+  //Prompts player 2 that it is their turn in the sidebar
+  function player2Overlay() {
+      $("#right").append(`<div id="p2TurnOverlay"></div>`);
+      $("#p2TurnOverlay").append($(`<div id="p2textInOverlay"></div>`));
+      $("#p2TurnOverlay").append($(`<div id="ok"></div>`))
+          $("#ok").text("OK")
+          $("#ok").on("click", function(){
+          $("#p2TurnOverlay").css("display", "none")
+        });
+      $("#p2textInOverlay").html("Player 2, you're up! Pick a friend and go find them!")
+
+      //css for ok button
+      $("#ok").css({
+        "text-align": "center",
+        "padding-top": "25px",
+        "margin-left": "50px",
+        "width": "150px",
+        "height": "50px",
+        "border": "#FFF 1px solid",
+        "background-color": "black",
+        "color": "white",
+      });
+
+      // css for p2overlay
+      $("#right").css("position", "relative");
+
+      $("#p2TurnOverlay").css ({
+        "padding-top": "100px",
+        "box-sizing": "border-box",
+        "background-color": "rgba(0, 0, 0, .9)",
+        "width": "100%",
+        "height": "100%",
+        "z-index": "10%",
+        "top": "0",
+        "left": "0",
+        "position": "absolute",
+    }); //End function
+
+    //css for text prompting player 2 it is their turn
+    $("#p2textInOverlay").css ({
+      "font-size": "20px",
+      "color": "white",
+      "text-align": "center",
+      "text-align": "center",
+      "margin-bottom": "50px"
+      });
+
+  }
+
+  //when you click a character they hide somewhere random in the grid
   $(".character button img").on("click", function() {
     var person = $(this).attr("id");
 
@@ -18,6 +125,7 @@ $(document).ready(function() {
     .html(`<img id="here" src="faces/${person}.png" />`);
 
     // add overlay text and button reset
+
     var overlay = $("#right").append(`<div id="overlay"></div>`);
     $("#overlay").append($(`<div id="textInOverlay"></div>`));
     $("#overlay").append($("#reset"));
@@ -49,6 +157,8 @@ $(document).ready(function() {
       "text-align": "center",
       "margin-bottom": "50px"
       });
+
+      play = true;
   });
 
 
@@ -73,12 +183,6 @@ $(document).ready(function() {
 
   }; // End clearBoard
 
-  // variable to hold the state of the game - true = playing; false = game over
-  var play = true;
-
-  var player = "player1";
-
-
   // Click handler for game functionality
   $(".back").on("click", function() {
 
@@ -98,6 +202,10 @@ $(document).ready(function() {
         clearBoard();
         $("#right").append($("#reset"))
         $("#overlay").remove()
+        play = false;
+        player2Overlay();
+        //ADD line that puts overlay over box that prompts player 2 to go. After they press OK then it removes.
+
         // switches player 1 to player 2, or show game winner because
         // both players have finished
         if(player === "player1") {
@@ -157,29 +265,4 @@ $(document).ready(function() {
       location.reload();
     });
   });
-
-
-
-
-  //
-  // if (player1 === true) {
-  //
-  //   } else if (player2 === true) {
-  //     $(".back").on("click", function() {
-  //       $(this)
-  //       .hide()
-  //       .siblings()
-  //       .show();
-  //
-  //       if ($(this).parent($(".box")).html().includes("img")) {
-  //         alert("You found your friend!");
-  //         clearBoard();
-  //       } else {
-  //         player2misses += 1;
-  //         $("#player2_score").text(player2misses);
-  //       }
-  //     });
-  //   };
-
-  // $("#card8").html().includes("<img")
 });
